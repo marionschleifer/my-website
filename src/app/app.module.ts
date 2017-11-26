@@ -7,17 +7,22 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
+    NoopAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    environment.production
+      ? ServiceWorkerModule.register('/ngsw-worker.js')
+      : []
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
